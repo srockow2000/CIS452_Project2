@@ -1,5 +1,6 @@
 package CIS452_Project2;
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -7,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.plaf.FontUIResource;
+
 import java.awt.GridLayout;
 
 // Java implementation of First - Fit algorithm
@@ -71,6 +74,8 @@ class GFG{
 
 		//borders
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 3);	
+		Font font = new Font("Courier", Font.PLAIN, 18);
+		Font font2 = new Font("Courier", Font.PLAIN, 14);
 
 		//JLabels
 		JLabel title = new JLabel("Memory Management");
@@ -79,6 +84,7 @@ class GFG{
 		title.setHorizontalAlignment(JLabel.CENTER);
 		title.setBackground(Color.PINK);
 		title.setOpaque(true);
+		title.setFont(font);
 		frame.getContentPane().add(title);
 
 		JLabel lab = new JLabel("First Fit");
@@ -87,6 +93,7 @@ class GFG{
 		lab.setHorizontalAlignment(JLabel.CENTER);
 		lab.setBackground(Color.PINK);
 		lab.setOpaque(true);
+		lab.setFont(font2);
 		frame.getContentPane().add(lab);
 
 
@@ -96,6 +103,7 @@ class GFG{
 		bes.setHorizontalAlignment(JLabel.CENTER);
 		bes.setBackground(Color.PINK);
 		bes.setOpaque(true);
+		bes.setFont(font2);
 		frame.getContentPane().add(bes);
 
 
@@ -105,6 +113,7 @@ class GFG{
 		wor.setHorizontalAlignment(JLabel.CENTER);
 		wor.setBackground(Color.PINK);
 		wor.setOpaque(true);
+		wor.setFont(font2);
 		frame.getContentPane().add(wor);
 
 		JLabel proNum = new JLabel("Process Number");
@@ -113,6 +122,7 @@ class GFG{
 		proNum.setHorizontalAlignment(JLabel.CENTER);
 		proNum.setBackground(Color.LIGHT_GRAY);
 		proNum.setOpaque(true);
+		proNum.setFont(font2);
 		frame.getContentPane().add(proNum);
 
 		JLabel proSize = new JLabel("Process Size");
@@ -121,6 +131,7 @@ class GFG{
 		proSize.setHorizontalAlignment(JLabel.CENTER);
 		proSize.setBackground(Color.LIGHT_GRAY);
 		proSize.setOpaque(true);
+		proSize.setFont(font2);
 		frame.getContentPane().add(proSize);
 
 		JLabel block = new JLabel("Block Number");
@@ -129,6 +140,7 @@ class GFG{
 		block.setHorizontalAlignment(JLabel.CENTER);
 		block.setBackground(Color.LIGHT_GRAY);
 		block.setOpaque(true);
+		block.setFont(font2);
 		frame.getContentPane().add(block);
 
 		//This label is here to align the others, should be put in last to preserve order!
