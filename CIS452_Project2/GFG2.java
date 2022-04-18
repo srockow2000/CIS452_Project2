@@ -63,7 +63,7 @@ class GFG{
 		/** GUI Parts */
 		JFrame frame = new JFrame("Project 2");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(700,700);
+        frame.setSize(850,800);
 
 		JPanel pj = new JPanel();
 		pj.setLayout(new GridLayout());
@@ -74,38 +74,62 @@ class GFG{
 
 		//JLabels
 		JLabel title = new JLabel("Memory Management");
-		title.setBounds(300, 50, 150, 50);
+		title.setBounds(400, 25, 225, 50);
 		title.setBorder(border);
 		title.setHorizontalAlignment(JLabel.CENTER);
-		title.setBackground(Color.LIGHT_GRAY);
+		title.setBackground(Color.PINK);
 		title.setOpaque(true);
 		frame.getContentPane().add(title);
 
 		JLabel lab = new JLabel("First Fit");
-		lab.setBounds(150, 600, 100, 50);
+		lab.setBounds(200, 700, 150, 50);
 		lab.setBorder(border);
 		lab.setHorizontalAlignment(JLabel.CENTER);
-		lab.setBackground(Color.LIGHT_GRAY);
+		lab.setBackground(Color.PINK);
 		lab.setOpaque(true);
 		frame.getContentPane().add(lab);
 
 
 		JLabel bes = new JLabel("Best Fit");
-		bes.setBounds(400, 600, 100, 50);
+		bes.setBounds(400, 700, 150, 50);
 		bes.setBorder(border);
 		bes.setHorizontalAlignment(JLabel.CENTER);
-		bes.setBackground(Color.LIGHT_GRAY);
+		bes.setBackground(Color.PINK);
 		bes.setOpaque(true);
 		frame.getContentPane().add(bes);
 
 
 		JLabel wor = new JLabel("Worst Fit");
-		wor.setBounds(650, 600, 100, 50);
+		wor.setBounds(600, 700, 150, 50);
 		wor.setBorder(border);
 		wor.setHorizontalAlignment(JLabel.CENTER);
-		wor.setBackground(Color.LIGHT_GRAY);
+		wor.setBackground(Color.PINK);
 		wor.setOpaque(true);
 		frame.getContentPane().add(wor);
+
+		JLabel proNum = new JLabel("Process Number");
+		proNum.setBounds(25, 100, 150, 50);
+		proNum.setBorder(border);
+		proNum.setHorizontalAlignment(JLabel.CENTER);
+		proNum.setBackground(Color.LIGHT_GRAY);
+		proNum.setOpaque(true);
+		frame.getContentPane().add(proNum);
+
+		JLabel proSize = new JLabel("Process Size");
+		proSize.setBounds(25, 300, 150, 50);
+		proSize.setBorder(border);
+		proSize.setHorizontalAlignment(JLabel.CENTER);
+		proSize.setBackground(Color.LIGHT_GRAY);
+		proSize.setOpaque(true);
+		frame.getContentPane().add(proSize);
+
+		JLabel block = new JLabel("Block Number");
+		block.setBounds(25, 500, 150, 50);
+		block.setBorder(border);
+		block.setHorizontalAlignment(JLabel.CENTER);
+		block.setBackground(Color.LIGHT_GRAY);
+		block.setOpaque(true);
+		frame.getContentPane().add(block);
 
 		//This label is here to align the others, should be put in last to preserve order!
 		JLabel tes = new JLabel();
