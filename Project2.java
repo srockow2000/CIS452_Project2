@@ -1,5 +1,10 @@
+package CIS452_Project2;
+
 import java.lang.Package;
 import javax.swing.*;
+import javax.swing.border.Border;
+
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.*;  
 
@@ -63,9 +68,13 @@ class GFG{
 		JPanel pj = new JPanel();
 		frame.getContentPane().add(pj); //not visible
 
+		Border border = BorderFactory.createLineBorder(Color.BLACK, 5);	
+
 		JLabel title = new JLabel("Memory Management");
 		frame.getContentPane().add(title);
-		title.setBounds(300, 50, 200, 50);
+		title.setBounds(300, 50, 150, 50);
+		title.setBorder(border);
+		title.setHorizontalAlignment(JLabel.CENTER);
 
 		JLabel lab = new JLabel("First Fit");
 		frame.getContentPane().add(lab);
