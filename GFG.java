@@ -1,4 +1,4 @@
-import java.lang.Package;
+package CIS452_Project2;
 import javax.swing.*;
 import java.awt.Frame;
 import java.awt.event.*;  

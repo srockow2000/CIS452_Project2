@@ -1,12 +1,12 @@
 package CIS452_Project2;
 
-import java.lang.Package;
-import javax.swing.*;
-import javax.swing.border.Border;
-
 import java.awt.Color;
-import java.awt.Frame;
-import java.awt.event.*;  
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.Border;  
 
 // Java implementation of First - Fit algorithm
 class GFG{
@@ -46,7 +46,7 @@ class GFG{
 				System.out.print(allocation[i] + 1);
 			else
 				System.out.print("Not Allocated");
-			System.out.println();
+			//System.out.println();
 		}
 	}
 	
