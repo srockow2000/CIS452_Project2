@@ -70,13 +70,13 @@ class GFG{
 		JLabel title = new JLabel("Memory Management");
 		frame.getContentPane().add(title);
 		title.setBounds(300, 50, 150, 50);
-		title.setBorder(border);
+		//title.setBorder(border);
 		title.setHorizontalAlignment(JLabel.CENTER);
 
 		JLabel wor = new JLabel("Worst Fit");
 		frame.getContentPane().add(wor);
 		wor.setBounds(450, 600, 50, 100);
-		
+
 		JLabel lab = new JLabel("First Fit");
 		frame.getContentPane().add(lab);
 		lab.setBounds(150, 600, 50, 100);
