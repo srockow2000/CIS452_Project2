@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=GFG
+comment1.params=blockSize\ m\ processSize\ n
+comment1.target=void\ firstFit(int[],\ int,\ int[],\ int)
+comment2.params=blockSize\ m\ processSize\ n
+comment2.target=void\ bestFit(int[],\ int,\ int[],\ int)
+comment3.params=blockSize\ m\ processSize\ n
+comment3.target=void\ worstFit(int[],\ int,\ int[],\ int)
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+numComments=5
