@@ -70,20 +70,28 @@ class GFG{
 		JLabel title = new JLabel("Memory Management");
 		frame.getContentPane().add(title);
 		title.setBounds(300, 50, 150, 50);
-		//title.setBorder(border);
+		title.setBorder(border);
 		title.setHorizontalAlignment(JLabel.CENTER);
-
-		JLabel wor = new JLabel("Worst Fit");
-		frame.getContentPane().add(wor);
-		wor.setBounds(450, 600, 50, 100);
 
 		JLabel lab = new JLabel("First Fit");
 		frame.getContentPane().add(lab);
-		lab.setBounds(150, 600, 50, 100);
+		lab.setBounds(150, 600, 100, 50);
+		lab.setBorder(border);
+		lab.setHorizontalAlignment(JLabel.CENTER);
+
 
 		JLabel bes = new JLabel("Best Fit");
 		frame.getContentPane().add(bes);
-		bes.setBounds(300, 600, 50, 100);
+		bes.setBounds(300, 600, 100, 50);
+		bes.setBorder(border);
+		bes.setHorizontalAlignment(JLabel.CENTER);
+
+
+		JLabel wor = new JLabel("Worst Fit");
+		frame.getContentPane().add(wor);
+		wor.setBounds(600, 650, 100, 50);
+		wor.setBorder(border);
+		wor.setHorizontalAlignment(JLabel.CENTER);
 
 
 		frame.setVisible(true);
