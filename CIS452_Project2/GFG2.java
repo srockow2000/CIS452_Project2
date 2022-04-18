@@ -1,9 +1,13 @@
 package CIS452_Project2;
-import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.Color;
-import java.awt.Frame;
-import java.awt.event.*;  
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+import java.awt.GridLayout;
 
 // Java implementation of First - Fit algorithm
 class GFG{
@@ -60,39 +64,52 @@ class GFG{
 		JFrame frame = new JFrame("Project 2");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700,700);
-		//JButton button1 = new JButton("Press");
-		//frame.getContentPane().add(button1);
+
 		JPanel pj = new JPanel();
+		pj.setLayout(new GridLayout());
 		frame.getContentPane().add(pj); //not visible
 
+		//borders
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 3);	
 
+		//JLabels
 		JLabel title = new JLabel("Memory Management");
-		frame.getContentPane().add(title);
 		title.setBounds(300, 50, 150, 50);
 		title.setBorder(border);
 		title.setHorizontalAlignment(JLabel.CENTER);
+		title.setBackground(Color.LIGHT_GRAY);
+		title.setOpaque(true);
+		frame.getContentPane().add(title);
 
 		JLabel lab = new JLabel("First Fit");
-		frame.getContentPane().add(lab);
 		lab.setBounds(150, 600, 100, 50);
 		lab.setBorder(border);
 		lab.setHorizontalAlignment(JLabel.CENTER);
+		lab.setBackground(Color.LIGHT_GRAY);
+		lab.setOpaque(true);
+		frame.getContentPane().add(lab);
 
 
 		JLabel bes = new JLabel("Best Fit");
-		frame.getContentPane().add(bes);
-		bes.setBounds(300, 600, 100, 50);
+		bes.setBounds(400, 600, 100, 50);
 		bes.setBorder(border);
 		bes.setHorizontalAlignment(JLabel.CENTER);
+		bes.setBackground(Color.LIGHT_GRAY);
+		bes.setOpaque(true);
+		frame.getContentPane().add(bes);
 
 
 		JLabel wor = new JLabel("Worst Fit");
-		frame.getContentPane().add(wor);
-		wor.setBounds(600, 650, 100, 50);
+		wor.setBounds(650, 600, 100, 50);
 		wor.setBorder(border);
 		wor.setHorizontalAlignment(JLabel.CENTER);
+		wor.setBackground(Color.LIGHT_GRAY);
+		wor.setOpaque(true);
+		frame.getContentPane().add(wor);
 
+		//This label is here to align the others, should be put in last to preserve order!
+		JLabel tes = new JLabel();
+		frame.getContentPane().add(tes);
 
 		frame.setVisible(true);
 		
