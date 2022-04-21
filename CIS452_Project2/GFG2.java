@@ -195,38 +195,40 @@ class GFG2{
         proNum.setFont(font2);
         frame.getContentPane().add(proNum);
         
+        String processText = "";
         for (int i = 0; i < blockSize.length; i++) {
-            String text = "First: " + Integer.toString(blockSize[i]);
-            JLabel firstTxt = new JLabel(text);
+            processText = Integer.toString(blockSize[i]);
+        }
+        
+        
+            String firstText = "First: " + processText;
+            JLabel firstTxt = new JLabel(firstText);
             firstTxt.setBounds(25, 100, 200, 50);
             firstTxt.setBorder(border);
             firstTxt.setOpaque(true);
             firstTxt.setFont(font2);
             firstTxt.setBackground(Color.CYAN);
             frame.getContentPane().add(firstTxt);
-        }
         
-        for (int i = 0; i < blockSize.length; i++) {
-            String text = "Best: " + Integer.toString(blockSize[i]);
-            JLabel bestTxt = new JLabel(text);
+        
+            String bestText = "Best: " + processText;
+            JLabel bestTxt = new JLabel(bestText);
             bestTxt.setBounds(25, 150, 200, 50);
             bestTxt.setBorder(border);
             bestTxt.setOpaque(true);
             bestTxt.setFont(font2);
             bestTxt.setBackground(Color.GREEN);
             frame.getContentPane().add(bestTxt);
-        }
         
-        for (int i = 0; i < blockSize.length; i++) {
-            String text = "Worst: " + Integer.toString(blockSize[i]);
-            JLabel worstTxt = new JLabel(text);
+        
+            String worstText = "Worst: " + processText;
+            JLabel worstTxt = new JLabel(worstText);
             worstTxt.setBounds(25, 200, 200, 50);
             worstTxt.setBorder(border);
             worstTxt.setOpaque(true);
             worstTxt.setFont(font2);
             worstTxt.setBackground(Color.ORANGE);
             frame.getContentPane().add(worstTxt);
-        }
         
         
 
