@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 // Java implementation of First - Fit algorithm
@@ -63,7 +64,7 @@ class GFG{
 		/** GUI Parts */
 		JFrame frame = new JFrame("Project 2");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500,500);
+        frame.setSize(850,800);
 
 		JPanel pj = new JPanel();
 		pj.setLayout(new GridLayout());
@@ -76,7 +77,7 @@ class GFG{
 
 		//JLabels
 		JLabel title = new JLabel("Memory Management");
-		title.setBounds(400, 25, 225, 50);
+		title.setBounds(400, 20, 225, 50);
 		title.setBorder(border);
 		title.setHorizontalAlignment(JLabel.CENTER);
 		title.setBackground(Color.PINK);
@@ -88,7 +89,7 @@ class GFG{
 		lab.setBounds(200, 700, 150, 50);
 		lab.setBorder(border);
 		lab.setHorizontalAlignment(JLabel.CENTER);
-		lab.setBackground(Color.PINK);
+		lab.setBackground(Color.CYAN);
 		lab.setOpaque(true);
 		lab.setFont(font2);
 		frame.getContentPane().add(lab);
@@ -98,7 +99,7 @@ class GFG{
 		bes.setBounds(400, 700, 150, 50);
 		bes.setBorder(border);
 		bes.setHorizontalAlignment(JLabel.CENTER);
-		bes.setBackground(Color.PINK);
+		bes.setBackground(Color.GREEN);
 		bes.setOpaque(true);
 		bes.setFont(font2);
 		frame.getContentPane().add(bes);
@@ -108,7 +109,7 @@ class GFG{
 		wor.setBounds(600, 700, 150, 50);
 		wor.setBorder(border);
 		wor.setHorizontalAlignment(JLabel.CENTER);
-		wor.setBackground(Color.PINK);
+		wor.setBackground(Color.ORANGE);
 		wor.setOpaque(true);
 		wor.setFont(font2);
 		frame.getContentPane().add(wor);
@@ -139,6 +140,15 @@ class GFG{
 		block.setOpaque(true);
 		block.setFont(font2);
 		frame.getContentPane().add(block);
+
+		JTextArea txt = new JTextArea("FirstFitTestText");
+		txt.setBounds(250, 100, 100, 50);
+		txt.setBorder(border);
+		//txt.setHorizontalAlignment(JLabel.CENTER);
+		txt.setBackground(Color.CYAN);
+		txt.setOpaque(true);
+		txt.setFont(font2);
+		frame.getContentPane().add(txt);
 
 		//This label is here to align the others, should be put in last to preserve label order!
 		JLabel tes = new JLabel();
