@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
+
 // Java implementation of First - Fit algorithm
 class GFG2{
     // Method to allocate memory to
@@ -131,6 +132,7 @@ class GFG2{
         return allocation;
     }
     
+    
     // Driver Code
     public static void main(String[] args){
         int blockSize[] = {100, 500, 200, 300, 600, 150, 200, 125, 327, 298, 103, 298, 123, 43, 29, 384, 429, 291, 92, 183};
@@ -141,7 +143,7 @@ class GFG2{
         
         
         /** GUI Parts */
-        JFrame frame = new JFrame("Project 2");
+        JFrame frame = new JFrame("Project 2: Memory Management");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(850,800);
 
@@ -155,15 +157,6 @@ class GFG2{
         Font font2 = new Font("Courier", Font.PLAIN, 14);
 
         //JLabels
-        JLabel title = new JLabel("Memory Management");
-        title.setBounds(20, 20, 225, 50);
-        title.setBorder(border);
-        title.setHorizontalAlignment(JLabel.CENTER);
-        title.setBackground(Color.PINK);
-        title.setOpaque(true);
-        title.setFont(font);
-        frame.getContentPane().add(title);
-
         JLabel lab = new JLabel("First Fit");
         lab.setBounds(250, 700, 150, 50);
         lab.setBorder(border);
@@ -194,7 +187,7 @@ class GFG2{
         frame.getContentPane().add(wor);
 
         JLabel proNum = new JLabel("Next Process to be allocated");
-        proNum.setBounds(25, 100, 150, 50);
+        proNum.setBounds(25, 100, 200, 150);
         proNum.setBorder(border);
         proNum.setHorizontalAlignment(JLabel.CENTER);
         proNum.setBackground(Color.LIGHT_GRAY);
@@ -203,7 +196,7 @@ class GFG2{
         frame.getContentPane().add(proNum);
 
         JLabel proSize = new JLabel("Time Units Passed");
-        proSize.setBounds(25, 300, 150, 50);
+        proSize.setBounds(25, 300, 200, 150);
         proSize.setBorder(border);
         proSize.setHorizontalAlignment(JLabel.CENTER);
         proSize.setBackground(Color.LIGHT_GRAY);
@@ -214,7 +207,9 @@ class GFG2{
         int [] first = firstFit(blockSize, m, processSize, n);
         int [] best = bestFit(blockSize, m, processSize, n);
         int [] worst = worstFit(blockSize, m, processSize, n);
-
+        
+       
+        
         for (int i = 0; i < first.length; i++) {
             
                 String blockText = Integer.toString(first[i]);
@@ -229,7 +224,9 @@ class GFG2{
                 txt.setOpaque(true);
                 txt.setFont(font2);
                 frame.getContentPane().add(txt);
+                
         }
+
         
         for (int i = 0; i < best.length; i++) {
                 String blockText = Integer.toString(best[i]);
@@ -259,6 +256,9 @@ class GFG2{
                 txt.setOpaque(true);
                 txt.setFont(font2);
                 frame.getContentPane().add(txt);
+                
+              
+                
         }
         
         //This label is here to align the others, should be put in last to preserve label order!
