@@ -63,7 +63,7 @@ class GFG{
 		/** GUI Parts */
 		JFrame frame = new JFrame("Project 2");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(850,800);
+        frame.setSize(500,500);
 
 		JPanel pj = new JPanel();
 		pj.setLayout(new GridLayout());
