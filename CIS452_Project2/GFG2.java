@@ -1,16 +1,13 @@
 package CIS452_Project2;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
-import javax.swing.plaf.FontUIResource;
-
-import java.awt.GridLayout;
 
 // Java implementation of First - Fit algorithm
 class GFG{

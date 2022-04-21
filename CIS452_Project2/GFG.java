@@ -1,7 +1,7 @@
 package CIS452_Project2;
-import javax.swing.*;
-import java.awt.Frame;
-import java.awt.event.*;  
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;  
 
 // Java implementation of First - Fit algorithm
 class GFG{
