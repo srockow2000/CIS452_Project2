@@ -79,7 +79,7 @@ class GFG2{
 
         //JLabels
         JLabel title = new JLabel("Memory Management");
-        title.setBounds(450, 20, 225, 50);
+        title.setBounds(15, 20, 225, 50);
         title.setBorder(border);
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setBackground(Color.PINK);
@@ -88,7 +88,7 @@ class GFG2{
         frame.getContentPane().add(title);
 
         JLabel lab = new JLabel("First Fit");
-        lab.setBounds(200, 700, 150, 50);
+        lab.setBounds(225, 700, 150, 50);
         lab.setBorder(border);
         lab.setHorizontalAlignment(JLabel.CENTER);
         lab.setBackground(Color.CYAN);
@@ -98,7 +98,7 @@ class GFG2{
 
 
         JLabel bes = new JLabel("Best Fit");
-        bes.setBounds(400, 700, 150, 50);
+        bes.setBounds(425, 700, 150, 50);
         bes.setBorder(border);
         bes.setHorizontalAlignment(JLabel.CENTER);
         bes.setBackground(Color.GREEN);
@@ -108,7 +108,7 @@ class GFG2{
 
 
         JLabel wor = new JLabel("Worst Fit");
-        wor.setBounds(600, 700, 150, 50);
+        wor.setBounds(625, 700, 150, 50);
         wor.setBorder(border);
         wor.setHorizontalAlignment(JLabel.CENTER);
         wor.setBackground(Color.ORANGE);
