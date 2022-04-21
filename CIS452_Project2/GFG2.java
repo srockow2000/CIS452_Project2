@@ -1,6 +1,6 @@
 package CIS452_Project2;
 
- 
+  
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -41,23 +41,102 @@ class GFG2{
                 }
             }
         }
-		System.out.println("\nProcess No.\tProcess Size\tBlock no.");
-        for (int i = 0; i < n; i++){
-            System.out.print(" " + (i+1) + "\t\t" +
-                             processSize[i] + "\t\t");
-            if (allocation[i] != -1)
-                System.out.print(allocation[i] + 1);
-            else
-                System.out.print("Not Allocated");
-            System.out.println();
+    
+        return allocation;
+    }
+    
+    // Method to allocate memory to blocks as per Best fit
+    // algorithm
+    static int[] bestFit(int blockSize[], int m, int processSize[],
+                                                     int n)
+    {
+        // Stores block id of the block allocated to a
+        // process
+        int allocation[] = new int[n];
+      
+        // Initially no block is assigned to any process
+        for (int i = 0; i < allocation.length; i++)
+            allocation[i] = -1;
+      
+     // pick each process and find suitable blocks
+        // according to its size ad assign to it
+        for (int i=0; i<n; i++)
+        {
+            // Find the best fit block for current process
+            int bestIdx = -1;
+            for (int j=0; j<m; j++)
+            {
+                if (blockSize[j] >= processSize[i])
+                {
+                    if (bestIdx == -1)
+                        bestIdx = j;
+                    else if (blockSize[bestIdx] > blockSize[j])
+                        bestIdx = j;
+                }
+            }
+      
+            // If we could find a block for current process
+            if (bestIdx != -1)
+            {
+                // allocate block j to p[i] process
+                allocation[i] = bestIdx;
+      
+                // Reduce available memory in this block.
+                blockSize[bestIdx] -= processSize[i];
+            }
         }
+        
+        return allocation;
+    }
+    
+    // Method to allocate memory to blocks as per worst fit
+    // algorithm
+    static int[] worstFit(int blockSize[], int m, int processSize[],
+                                                     int n)
+    {
+        // Stores block id of the block allocated to a
+        // process
+        int allocation[] = new int[n];
+      
+        // Initially no block is assigned to any process
+        for (int i = 0; i < allocation.length; i++)
+            allocation[i] = -1;
+      
+        // pick each process and find suitable blocks
+        // according to its size ad assign to it
+        for (int i=0; i<n; i++)
+        {
+            // Find the best fit block for current process
+            int wstIdx = -1;
+            for (int j=0; j<m; j++)
+            {
+                if (blockSize[j] >= processSize[i])
+                {
+                    if (wstIdx == -1)
+                        wstIdx = j;
+                    else if (blockSize[wstIdx] < blockSize[j])
+                        wstIdx = j;
+                }
+            }
+      
+            // If we could find a block for current process
+            if (wstIdx != -1)
+            {
+                // allocate block j to p[i] process
+                allocation[i] = wstIdx;
+      
+                // Reduce available memory in this block.
+                blockSize[wstIdx] -= processSize[i];
+            }
+        }
+        
         return allocation;
     }
     
     // Driver Code
     public static void main(String[] args){
-        int blockSize[] = {100, 500, 200, 300, 600};
-        int processSize[] = {212, 417, 112, 426};
+        int blockSize[] = {100, 500, 200, 300, 600, 150, 200, 125, 327, 298, 103, 298, 123, 43, 29, 384, 429, 291, 92, 183};
+        int processSize[] = {212, 417, 112, 426, 150, 238, 192, 382, 382, 92, 192, 82, 292, 248, 489, 921, 129, 382, 482, 291};
         int m = blockSize.length;
         int n = processSize.length;
         
@@ -79,7 +158,7 @@ class GFG2{
 
         //JLabels
         JLabel title = new JLabel("Memory Management");
-        title.setBounds(15, 20, 225, 50);
+        title.setBounds(20, 20, 225, 50);
         title.setBorder(border);
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setBackground(Color.PINK);
@@ -88,7 +167,7 @@ class GFG2{
         frame.getContentPane().add(title);
 
         JLabel lab = new JLabel("First Fit");
-        lab.setBounds(225, 700, 150, 50);
+        lab.setBounds(250, 700, 150, 50);
         lab.setBorder(border);
         lab.setHorizontalAlignment(JLabel.CENTER);
         lab.setBackground(Color.CYAN);
@@ -108,7 +187,7 @@ class GFG2{
 
 
         JLabel wor = new JLabel("Worst Fit");
-        wor.setBounds(625, 700, 150, 50);
+        wor.setBounds(600, 700, 150, 50);
         wor.setBorder(border);
         wor.setHorizontalAlignment(JLabel.CENTER);
         wor.setBackground(Color.ORANGE);
@@ -116,7 +195,7 @@ class GFG2{
         wor.setFont(font2);
         frame.getContentPane().add(wor);
 
-        JLabel proNum = new JLabel("Next Process");
+        JLabel proNum = new JLabel("Next Process to be allocated");
         proNum.setBounds(25, 100, 150, 50);
         proNum.setBorder(border);
         proNum.setHorizontalAlignment(JLabel.CENTER);
@@ -125,7 +204,7 @@ class GFG2{
         proNum.setFont(font2);
         frame.getContentPane().add(proNum);
 
-        JLabel proSize = new JLabel("Time Elapsed");
+        JLabel proSize = new JLabel("Time Units Passed");
         proSize.setBounds(25, 300, 150, 50);
         proSize.setBorder(border);
         proSize.setHorizontalAlignment(JLabel.CENTER);
@@ -133,31 +212,42 @@ class GFG2{
         proSize.setOpaque(true);
         proSize.setFont(font2);
         frame.getContentPane().add(proSize);
-
-        // JLabel block = new JLabel("Block Number"); 
-        // block.setBounds(25, 500, 150, 50);
-        // block.setBorder(border);
-        // block.setHorizontalAlignment(JLabel.CENTER);
-        // block.setBackground(Color.LIGHT_GRAY);
-        // block.setOpaque(true);
-        // block.setFont(font2);
-        // frame.getContentPane().add(block);
         
-        blockSize = firstFit(blockSize, m, processSize, n);
+        int [] first = firstFit(blockSize, m, processSize, n);
+        int [] best = bestFit(blockSize, m, processSize, n);
+        int [] worst = worstFit(blockSize, m, processSize, n);
 
-        for (int i = 0; i < blockSize.length; i++) {
-			String blockText;
-				if(blockSize[i] == -1){
-					blockText = "Not Allocated";
-				}
-				else{
-					blockText = Integer.toString(blockSize[i]+1);
-				}
+        for (int i = 0; i < first.length; i++) {
+                String blockText = Integer.toString(first[i]);
                 JLabel txt = new JLabel(blockText);
-                txt.setBounds(250, 50 * i, 115, 25);
+                txt.setBounds(250, 25 * i, 150, 25);
                 txt.setBorder(border);
                 //txt.setHorizontalAlignment(JLabel.CENTER);
                 txt.setBackground(Color.CYAN);
+                txt.setOpaque(true);
+                txt.setFont(font2);
+                frame.getContentPane().add(txt);
+        }
+        
+        for (int i = 0; i < best.length; i++) {
+                String blockText = Integer.toString(best[i]);
+                JLabel txt = new JLabel(blockText);
+                txt.setBounds(425, 25 * i, 150, 25);
+                txt.setBorder(border);
+                //txt.setHorizontalAlignment(JLabel.CENTER);
+                txt.setBackground(Color.GREEN);
+                txt.setOpaque(true);
+                txt.setFont(font2);
+                frame.getContentPane().add(txt);
+        }
+        
+        for (int i = 0; i < worst.length; i++) {
+                String blockText = Integer.toString(worst[i]);
+                JLabel txt = new JLabel(blockText);
+                txt.setBounds(600, 25 * i, 150, 25);
+                txt.setBorder(border);
+                //txt.setHorizontalAlignment(JLabel.CENTER);
+                txt.setBackground(Color.ORANGE);
                 txt.setOpaque(true);
                 txt.setFont(font2);
                 frame.getContentPane().add(txt);
@@ -168,5 +258,6 @@ class GFG2{
         frame.getContentPane().add(tes);
 
         frame.setVisible(true);
+        //testing....?
     }
 }
