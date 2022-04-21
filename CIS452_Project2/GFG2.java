@@ -143,7 +143,7 @@ class GFG{
 		block.setFont(font2);
 		frame.getContentPane().add(block);
 
-		//This label is here to align the others, should be put in last to preserve order!
+		//This label is here to align the others, should be put in last to preserve label order!
 		JLabel tes = new JLabel();
 		frame.getContentPane().add(tes);
 
