@@ -1,3 +1,5 @@
+package CIS452_Project2;
+
  
 import java.awt.Color;
 import java.awt.Font;
@@ -39,7 +41,16 @@ class GFG2{
                 }
             }
         }
-    
+		System.out.println("\nProcess No.\tProcess Size\tBlock no.");
+        for (int i = 0; i < n; i++){
+            System.out.print(" " + (i+1) + "\t\t" +
+                             processSize[i] + "\t\t");
+            if (allocation[i] != -1)
+                System.out.print(allocation[i] + 1);
+            else
+                System.out.print("Not Allocated");
+            System.out.println();
+        }
         return allocation;
     }
     
@@ -68,7 +79,7 @@ class GFG2{
 
         //JLabels
         JLabel title = new JLabel("Memory Management");
-        title.setBounds(400, 20, 225, 50);
+        title.setBounds(450, 20, 225, 50);
         title.setBorder(border);
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setBackground(Color.PINK);
@@ -105,7 +116,7 @@ class GFG2{
         wor.setFont(font2);
         frame.getContentPane().add(wor);
 
-        JLabel proNum = new JLabel("Process Number");
+        JLabel proNum = new JLabel("Next Process");
         proNum.setBounds(25, 100, 150, 50);
         proNum.setBorder(border);
         proNum.setHorizontalAlignment(JLabel.CENTER);
@@ -114,7 +125,7 @@ class GFG2{
         proNum.setFont(font2);
         frame.getContentPane().add(proNum);
 
-        JLabel proSize = new JLabel("Process Size");
+        JLabel proSize = new JLabel("Time Elapsed");
         proSize.setBounds(25, 300, 150, 50);
         proSize.setBorder(border);
         proSize.setHorizontalAlignment(JLabel.CENTER);
@@ -123,21 +134,27 @@ class GFG2{
         proSize.setFont(font2);
         frame.getContentPane().add(proSize);
 
-        JLabel block = new JLabel("Block Number"); 
-        block.setBounds(25, 500, 150, 50);
-        block.setBorder(border);
-        block.setHorizontalAlignment(JLabel.CENTER);
-        block.setBackground(Color.LIGHT_GRAY);
-        block.setOpaque(true);
-        block.setFont(font2);
-        frame.getContentPane().add(block);
+        // JLabel block = new JLabel("Block Number"); 
+        // block.setBounds(25, 500, 150, 50);
+        // block.setBorder(border);
+        // block.setHorizontalAlignment(JLabel.CENTER);
+        // block.setBackground(Color.LIGHT_GRAY);
+        // block.setOpaque(true);
+        // block.setFont(font2);
+        // frame.getContentPane().add(block);
         
         blockSize = firstFit(blockSize, m, processSize, n);
 
         for (int i = 0; i < blockSize.length; i++) {
-                String blockText = Integer.toString(blockSize[i]);
-                JTextArea txt = new JTextArea(blockText);
-                txt.setBounds(250, 50 * i, 100, 50);
+			String blockText;
+				if(blockSize[i] == -1){
+					blockText = "Not Allocated";
+				}
+				else{
+					blockText = Integer.toString(blockSize[i]+1);
+				}
+                JLabel txt = new JLabel(blockText);
+                txt.setBounds(250, 50 * i, 115, 25);
                 txt.setBorder(border);
                 //txt.setHorizontalAlignment(JLabel.CENTER);
                 txt.setBackground(Color.CYAN);
@@ -151,6 +168,5 @@ class GFG2{
         frame.getContentPane().add(tes);
 
         frame.setVisible(true);
-        //testing....?
     }
 }
