@@ -187,13 +187,48 @@ class GFG2{
         frame.getContentPane().add(wor);
 
         JLabel proNum = new JLabel("Next Process to be allocated");
-        proNum.setBounds(25, 100, 200, 150);
+        proNum.setBounds(25, 50, 200, 50);
         proNum.setBorder(border);
         proNum.setHorizontalAlignment(JLabel.CENTER);
         proNum.setBackground(Color.LIGHT_GRAY);
         proNum.setOpaque(true);
         proNum.setFont(font2);
         frame.getContentPane().add(proNum);
+        
+        for (int i = 0; i < blockSize.length; i++) {
+            String text = "First: " + Integer.toString(blockSize[i]);
+            JLabel firstTxt = new JLabel(text);
+            firstTxt.setBounds(25, 100, 200, 50);
+            firstTxt.setBorder(border);
+            firstTxt.setOpaque(true);
+            firstTxt.setFont(font2);
+            firstTxt.setBackground(Color.CYAN);
+            frame.getContentPane().add(firstTxt);
+        }
+        
+        for (int i = 0; i < blockSize.length; i++) {
+            String text = "Best: " + Integer.toString(blockSize[i]);
+            JLabel bestTxt = new JLabel(text);
+            bestTxt.setBounds(25, 150, 200, 50);
+            bestTxt.setBorder(border);
+            bestTxt.setOpaque(true);
+            bestTxt.setFont(font2);
+            bestTxt.setBackground(Color.GREEN);
+            frame.getContentPane().add(bestTxt);
+        }
+        
+        for (int i = 0; i < blockSize.length; i++) {
+            String text = "Worst: " + Integer.toString(blockSize[i]);
+            JLabel worstTxt = new JLabel(text);
+            worstTxt.setBounds(25, 200, 200, 50);
+            worstTxt.setBorder(border);
+            worstTxt.setOpaque(true);
+            worstTxt.setFont(font2);
+            worstTxt.setBackground(Color.ORANGE);
+            frame.getContentPane().add(worstTxt);
+        }
+        
+        
 
         JLabel proSize = new JLabel("Time Units Passed");
         proSize.setBounds(25, 300, 200, 150);
