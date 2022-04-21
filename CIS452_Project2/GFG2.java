@@ -1,6 +1,4 @@
-package CIS452_Project2;
-
-  
+ 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -218,7 +216,11 @@ class GFG2{
         int [] worst = worstFit(blockSize, m, processSize, n);
 
         for (int i = 0; i < first.length; i++) {
+            
                 String blockText = Integer.toString(first[i]);
+                if(first[i] == -1) {
+                    blockText = "Not allocated";
+                }
                 JLabel txt = new JLabel(blockText);
                 txt.setBounds(250, 25 * i, 150, 25);
                 txt.setBorder(border);
@@ -231,6 +233,9 @@ class GFG2{
         
         for (int i = 0; i < best.length; i++) {
                 String blockText = Integer.toString(best[i]);
+                if(best[i] == -1) {
+                    blockText = "Not allocated";
+                }
                 JLabel txt = new JLabel(blockText);
                 txt.setBounds(425, 25 * i, 150, 25);
                 txt.setBorder(border);
@@ -243,6 +248,9 @@ class GFG2{
         
         for (int i = 0; i < worst.length; i++) {
                 String blockText = Integer.toString(worst[i]);
+                if(worst[i] == -1) {
+                    blockText = "Not allocated";
+                }
                 JLabel txt = new JLabel(blockText);
                 txt.setBounds(600, 25 * i, 150, 25);
                 txt.setBorder(border);
