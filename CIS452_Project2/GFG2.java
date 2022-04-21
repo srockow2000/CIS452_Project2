@@ -134,7 +134,7 @@ class GFG{
 		proSize.setFont(font2);
 		frame.getContentPane().add(proSize);
 
-		JLabel block = new JLabel("Block Number");
+		JLabel block = new JLabel("Block Number"); 
 		block.setBounds(25, 500, 150, 50);
 		block.setBorder(border);
 		block.setHorizontalAlignment(JLabel.CENTER);
