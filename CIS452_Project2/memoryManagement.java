@@ -125,7 +125,6 @@ class memoryManagement{
         int [] first = firstFit(blockSize, processSize);
         int [] best = bestFit(blockSize, processSize);
         int [] worst = worstFit(blockSize, processSize);
-        
 
         /** GUI Parts */
         JFrame frame = new JFrame("- Project 2: Memory Management -");
@@ -157,6 +156,7 @@ class memoryManagement{
                 button.setBackground(Color.WHITE);
                 TimerTask task = new TimerTask() {
                     int inny = 0;
+                    int finy = 0;
                     public void run(){
                         /** First Fit */
                         String blockText = Integer.toString(first[inny]);
@@ -202,16 +202,64 @@ class memoryManagement{
                         txts.setOpaque(true);
                         txts.setFont(font2);
                         frame.getContentPane().add(txts);
-                                
+                        inny++;
+
+                        /** Time Passed */
+                        JLabel time = new JLabel("Time Passed: 2500 ms");
+                        time.setBounds(25, 300, 200, 150);
+                        time.setBorder(border);
+                        time.setHorizontalAlignment(JLabel.CENTER);
+                        time.setBackground(Color.YELLOW);
+                        time.setOpaque(true);
+                        time.setFont(font2);
+                        frame.getContentPane().add(time);
+
+
+                        /** Allocation */
+                        String processText = "";
+                        if (inny < blockSize.length) {
+                            processText = Integer.toString(blockSize[inny]);
+                        }
+                        
+                        String firstText = "First: " + processText;
+                        JLabel firstTxt = new JLabel(firstText);
+                        firstTxt.setBounds(25, 100, 200, 50);
+                        firstTxt.setBorder(border);
+                        firstTxt.setOpaque(true);
+                        firstTxt.setFont(font);
+                        firstTxt.setHorizontalAlignment(JLabel.CENTER);
+                        firstTxt.setBackground(Color.CYAN);
+                        frame.getContentPane().add(firstTxt);
+                    
+                        String bestText = "Best: " + processText;
+                        JLabel bestTxt = new JLabel(bestText);
+                        bestTxt.setBounds(25, 150, 200, 50);
+                        bestTxt.setBorder(border);
+                        bestTxt.setOpaque(true);
+                        bestTxt.setFont(font);
+                        bestTxt.setHorizontalAlignment(JLabel.CENTER);
+                        bestTxt.setBackground(Color.GREEN);
+                        frame.getContentPane().add(bestTxt);
+                    
+                        String worstText = "Worst: " + processText;
+                        JLabel worstTxt = new JLabel(worstText);
+                        worstTxt.setBounds(25, 200, 200, 50);
+                        worstTxt.setBorder(border);
+                        worstTxt.setOpaque(true);
+                        worstTxt.setFont(font);
+                        worstTxt.setHorizontalAlignment(JLabel.CENTER);
+                        worstTxt.setBackground(Color.MAGENTA);
+                        frame.getContentPane().add(worstTxt);
+                        inny++;
+                        
                         JLabel tes = new JLabel();
                         frame.getContentPane().add(tes);
                         frame.setVisible(true);
-                        inny++;
                     }
                 };
-                JLabel tes = new JLabel();
-                frame.getContentPane().add(tes);
-                frame.setVisible(true);
+                // JLabel tes = new JLabel();
+                // frame.getContentPane().add(tes);
+                // frame.setVisible(true);
                 timer.schedule(task, 1500, 1000);
             }
         });
@@ -252,58 +300,12 @@ class memoryManagement{
         proNum.setOpaque(true);
         proNum.setFont(font);
         frame.getContentPane().add(proNum);
-        
-        String processText = "";
-        for (int i = 0; i < blockSize.length; i++) {
-            processText = Integer.toString(blockSize[i]);
-        }
-        
-            String firstText = "First: " + processText;
-            JLabel firstTxt = new JLabel(firstText);
-            firstTxt.setBounds(25, 100, 200, 50);
-            firstTxt.setBorder(border);
-            firstTxt.setOpaque(true);
-            firstTxt.setFont(font);
-            firstTxt.setHorizontalAlignment(JLabel.CENTER);
-            firstTxt.setBackground(Color.CYAN);
-            frame.getContentPane().add(firstTxt);
-        
-            String bestText = "Best: " + processText;
-            JLabel bestTxt = new JLabel(bestText);
-            bestTxt.setBounds(25, 150, 200, 50);
-            bestTxt.setBorder(border);
-            bestTxt.setOpaque(true);
-            bestTxt.setFont(font);
-            bestTxt.setHorizontalAlignment(JLabel.CENTER);
-            bestTxt.setBackground(Color.GREEN);
-            frame.getContentPane().add(bestTxt);
-        
-            String worstText = "Worst: " + processText;
-            JLabel worstTxt = new JLabel(worstText);
-            worstTxt.setBounds(25, 200, 200, 50);
-            worstTxt.setBorder(border);
-            worstTxt.setOpaque(true);
-            worstTxt.setFont(font);
-            worstTxt.setHorizontalAlignment(JLabel.CENTER);
-            worstTxt.setBackground(Color.MAGENTA);
-            frame.getContentPane().add(worstTxt);
-        
-        JLabel proSize = new JLabel("Time Units Passed");
-        proSize.setBounds(25, 300, 200, 150);
-        proSize.setBorder(border);
-        proSize.setHorizontalAlignment(JLabel.CENTER);
-        proSize.setBackground(Color.LIGHT_GRAY);
-        proSize.setOpaque(true);
-        proSize.setFont(font);
-        frame.getContentPane().add(proSize);
 
         frame.getContentPane().setBackground(Color.DARK_GRAY);
         
         //This label is here to align the others, should be put in last to preserve label order!
         JLabel tes = new JLabel();
         frame.getContentPane().add(tes);
-        
         frame.setVisible(true);
-        //testing....?
     }
 }
