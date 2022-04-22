@@ -138,7 +138,7 @@ class memoryManagement{
 
         //borders
         Border border = BorderFactory.createLineBorder(Color.BLACK, 3); 
-       // Font font = new Font("Courier", Font.PLAIN, 18);
+        Font font = new Font("Courier", Font.PLAIN, 18);
         Font font2 = new Font("Courier", Font.PLAIN, 14);
 
         Timer timer = new Timer("Timer");
@@ -150,7 +150,7 @@ class memoryManagement{
         button.setHorizontalAlignment(JLabel.CENTER);
         button.setBackground(Color.PINK);
         button.setOpaque(true);
-        button.setFont(font2);
+        button.setFont(font);
         frame.getContentPane().add(button);
 		button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -182,7 +182,7 @@ class memoryManagement{
                         JLabel txtx = new JLabel(blockTextx);
                         txtx.setBounds(425, 33 * inny, 150, 25);
                         txtx.setBorder(border);
-                        txt.setHorizontalAlignment(JLabel.CENTER);
+                        txtx.setHorizontalAlignment(JLabel.CENTER);
                         txtx.setBackground(Color.GREEN);
                         txtx.setOpaque(true);
                         txtx.setFont(font2);
@@ -196,7 +196,7 @@ class memoryManagement{
                         JLabel txts = new JLabel(blockTexts);
                         txts.setBounds(600, 33 * inny, 150, 25);
                         txts.setBorder(border);
-                        txt.setHorizontalAlignment(JLabel.CENTER);
+                        txts.setHorizontalAlignment(JLabel.CENTER);
                         txts.setBackground(Color.ORANGE);
                         txts.setOpaque(true);
                         txts.setFont(font2);
@@ -215,9 +215,6 @@ class memoryManagement{
             }
         });
 
-		 
-
-
         //JLabels
         JLabel lab = new JLabel("First Fit");
         lab.setBounds(250, 700, 150, 50);
@@ -225,9 +222,8 @@ class memoryManagement{
         lab.setHorizontalAlignment(JLabel.CENTER);
         lab.setBackground(Color.CYAN);
         lab.setOpaque(true);
-        lab.setFont(font2);
+        lab.setFont(font);
         frame.getContentPane().add(lab);
-
 
         JLabel bes = new JLabel("Best Fit");
         bes.setBounds(425, 700, 150, 50);
@@ -235,9 +231,8 @@ class memoryManagement{
         bes.setHorizontalAlignment(JLabel.CENTER);
         bes.setBackground(Color.GREEN);
         bes.setOpaque(true);
-        bes.setFont(font2);
+        bes.setFont(font);
         frame.getContentPane().add(bes);
-
 
         JLabel wor = new JLabel("Worst Fit");
         wor.setBounds(600, 700, 150, 50);
@@ -245,7 +240,7 @@ class memoryManagement{
         wor.setHorizontalAlignment(JLabel.CENTER);
         wor.setBackground(Color.ORANGE);
         wor.setOpaque(true);
-        wor.setFont(font2);
+        wor.setFont(font);
         frame.getContentPane().add(wor);
 
         JLabel proNum = new JLabel("Next Allocation");
@@ -254,14 +249,13 @@ class memoryManagement{
         proNum.setHorizontalAlignment(JLabel.CENTER);
         proNum.setBackground(Color.LIGHT_GRAY);
         proNum.setOpaque(true);
-        proNum.setFont(font2);
+        proNum.setFont(font);
         frame.getContentPane().add(proNum);
         
         String processText = "";
         for (int i = 0; i < blockSize.length; i++) {
             processText = Integer.toString(blockSize[i]);
         }
-        
         
             String firstText = "First: " + processText;
             JLabel firstTxt = new JLabel(firstText);
@@ -273,7 +267,6 @@ class memoryManagement{
             firstTxt.setBackground(Color.CYAN);
             frame.getContentPane().add(firstTxt);
         
-        
             String bestText = "Best: " + processText;
             JLabel bestTxt = new JLabel(bestText);
             bestTxt.setBounds(25, 150, 200, 50);
@@ -283,7 +276,6 @@ class memoryManagement{
             bestTxt.setHorizontalAlignment(JLabel.CENTER);
             bestTxt.setBackground(Color.GREEN);
             frame.getContentPane().add(bestTxt);
-        
         
             String worstText = "Worst: " + processText;
             JLabel worstTxt = new JLabel(worstText);
@@ -295,17 +287,14 @@ class memoryManagement{
             worstTxt.setBackground(Color.ORANGE);
             frame.getContentPane().add(worstTxt);
         
-        
-
         JLabel proSize = new JLabel("Time Units Passed");
         proSize.setBounds(25, 300, 200, 150);
         proSize.setBorder(border);
         proSize.setHorizontalAlignment(JLabel.CENTER);
         proSize.setBackground(Color.LIGHT_GRAY);
         proSize.setOpaque(true);
-        proSize.setFont(font2);
+        proSize.setFont(font);
         frame.getContentPane().add(proSize);
-        
         
         //This label is here to align the others, should be put in last to preserve label order!
         JLabel tes = new JLabel();
