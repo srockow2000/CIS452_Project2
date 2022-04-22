@@ -1,4 +1,3 @@
- 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -9,10 +8,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
+import java.awt.event.*;
+import javax.swing.*;
 
 
 // Java implementation of First - Fit algorithm
 class memoryManagement{
+    private boolean wait = true; 
+    private int runTime = 0;
+    
     // Method to allocate memory to
     // blocks as per First fit algorithm
     public static int[] firstFit(int memory[], int runTime[]){
@@ -129,9 +133,19 @@ class memoryManagement{
         return allocation;
     }
     
+    public boolean getDelay() {
+        return this.wait;
+    }
     
-    // Driver Code
-    public static void main(String[] args){
+    public void setDelay(boolean condition) {
+        this.wait = condition;
+    }
+    
+    public void actionPerformed (ActionEvent e){
+        setDelay(true);
+    }
+    
+    public void memGUI() {
         int blockSize[] = {100, 500, 200, 300, 600, 150, 200, 125, 327, 298, 103, 298, 123, 43, 29, 384, 429, 291, 92, 183};
         int processSize[] = {212, 417, 112, 426, 150, 238, 192, 382, 382, 92, 192, 82, 292, 248, 489, 921, 129, 382, 482, 291};
         
@@ -181,61 +195,16 @@ class memoryManagement{
         wor.setOpaque(true);
         wor.setFont(font2);
         frame.getContentPane().add(wor);
-
-        JLabel proNum = new JLabel("Next Process to be allocated");
-        proNum.setBounds(25, 50, 200, 50);
-        proNum.setBorder(border);
-        proNum.setHorizontalAlignment(JLabel.CENTER);
-        proNum.setBackground(Color.LIGHT_GRAY);
-        proNum.setOpaque(true);
-        proNum.setFont(font2);
-        frame.getContentPane().add(proNum);
         
-        String processText = "";
-        for (int i = 0; i < blockSize.length; i++) {
-            processText = Integer.toString(blockSize[i]);
-        }
-        
-        
-            String firstText = "First: " + processText;
-            JLabel firstTxt = new JLabel(firstText);
-            firstTxt.setBounds(25, 100, 200, 50);
-            firstTxt.setBorder(border);
-            firstTxt.setOpaque(true);
-            firstTxt.setFont(font2);
-            firstTxt.setBackground(Color.CYAN);
-            frame.getContentPane().add(firstTxt);
-        
-        
-            String bestText = "Best: " + processText;
-            JLabel bestTxt = new JLabel(bestText);
-            bestTxt.setBounds(25, 150, 200, 50);
-            bestTxt.setBorder(border);
-            bestTxt.setOpaque(true);
-            bestTxt.setFont(font2);
-            bestTxt.setBackground(Color.GREEN);
-            frame.getContentPane().add(bestTxt);
-        
-        
-            String worstText = "Worst: " + processText;
-            JLabel worstTxt = new JLabel(worstText);
-            worstTxt.setBounds(25, 200, 200, 50);
-            worstTxt.setBorder(border);
-            worstTxt.setOpaque(true);
-            worstTxt.setFont(font2);
-            worstTxt.setBackground(Color.ORANGE);
-            frame.getContentPane().add(worstTxt);
-        
-        
-
-        JLabel proSize = new JLabel("Time Units Passed");
-        proSize.setBounds(25, 300, 200, 150);
-        proSize.setBorder(border);
-        proSize.setHorizontalAlignment(JLabel.CENTER);
-        proSize.setBackground(Color.LIGHT_GRAY);
-        proSize.setOpaque(true);
-        proSize.setFont(font2);
-        frame.getContentPane().add(proSize);
+        JButton delay = new JButton("Next process");
+        delay.setBounds(25, 25, 200, 20);
+        delay.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                setDelay(true);
+                System.out.println(getDelay());
+            }
+        });
+        frame.getContentPane().add(delay);
         
         int [] first = firstFit(blockSize, processSize);
         int [] best = bestFit(blockSize, processSize);
@@ -244,7 +213,6 @@ class memoryManagement{
        
         
         for (int i = 0; i < first.length; i++) {
-            
                 String blockText = Integer.toString(first[i]);
                 if(first[i] == -1) {
                     blockText = "Not allocated";
@@ -257,6 +225,8 @@ class memoryManagement{
                 txt.setOpaque(true);
                 txt.setFont(font2);
                 frame.getContentPane().add(txt);
+                
+                this.runTime += 1;
                 
         }
 
@@ -289,16 +259,76 @@ class memoryManagement{
                 txt.setOpaque(true);
                 txt.setFont(font2);
                 frame.getContentPane().add(txt);
-                
-              
+                setDelay(false);
                 
         }
+        
+        JLabel proNum = new JLabel("Next Process to be allocated");
+        proNum.setBounds(25, 50, 200, 50);
+        proNum.setBorder(border);
+        proNum.setHorizontalAlignment(JLabel.CENTER);
+        proNum.setBackground(Color.LIGHT_GRAY);
+        proNum.setOpaque(true);
+        proNum.setFont(font2);
+        frame.getContentPane().add(proNum);
+        
+        
+        String processText = "";
+        for (int i = 0; i < blockSize.length; i++) {
+            processText = Integer.toString(blockSize[i]);
+            setDelay(false);
+        }
+        
+            String firstText = "First: " + processText;
+            JLabel firstTxt = new JLabel(firstText);
+            firstTxt.setBounds(25, 100, 200, 50);
+            firstTxt.setBorder(border);
+            firstTxt.setOpaque(true);
+            firstTxt.setFont(font2);
+            firstTxt.setBackground(Color.CYAN);
+            frame.getContentPane().add(firstTxt);
+        
+        
+            String bestText = "Best: " + processText;
+            JLabel bestTxt = new JLabel(bestText);
+            bestTxt.setBounds(25, 150, 200, 50);
+            bestTxt.setBorder(border);
+            bestTxt.setOpaque(true);
+            bestTxt.setFont(font2);
+            bestTxt.setBackground(Color.GREEN);
+            frame.getContentPane().add(bestTxt);
+        
+        
+            String worstText = "Worst: " + processText;
+            JLabel worstTxt = new JLabel(worstText);
+            worstTxt.setBounds(25, 200, 200, 50);
+            worstTxt.setBorder(border);
+            worstTxt.setOpaque(true);
+            worstTxt.setFont(font2);
+            worstTxt.setBackground(Color.ORANGE);
+            frame.getContentPane().add(worstTxt);
+            
+        JLabel proSize = new JLabel("Time Units Passed: " + runTime);
+        proSize.setBounds(25, 300, 200, 150);
+        proSize.setBorder(border);
+        proSize.setHorizontalAlignment(JLabel.CENTER);
+        proSize.setBackground(Color.LIGHT_GRAY);
+        proSize.setOpaque(true);
+        proSize.setFont(font2);
+        frame.getContentPane().add(proSize);
         
         //This label is here to align the others, should be put in last to preserve label order!
         JLabel tes = new JLabel();
         frame.getContentPane().add(tes);
 
         frame.setVisible(true);
-        //testing....?
+    
+    }
+    
+    
+    // Driver Code
+    public static void main(String[] args){
+        memoryManagement mem = new memoryManagement();
+        mem.memGUI();
     }
 }
