@@ -198,7 +198,7 @@ class memoryManagement{
                         txts.setBounds(620, 33 * inny, 150, 25);
                         txts.setBorder(border);
                         txts.setHorizontalAlignment(JLabel.CENTER);
-                        txts.setBackground(Color.ORANGE);
+                        txts.setBackground(Color.MAGENTA);
                         txts.setOpaque(true);
                         txts.setFont(font2);
                         frame.getContentPane().add(txts);
@@ -239,7 +239,7 @@ class memoryManagement{
         wor.setBounds(620, 700, 150, 50);
         wor.setBorder(border);
         wor.setHorizontalAlignment(JLabel.CENTER);
-        wor.setBackground(Color.ORANGE);
+        wor.setBackground(Color.MAGENTA);
         wor.setOpaque(true);
         wor.setFont(font);
         frame.getContentPane().add(wor);
@@ -285,7 +285,7 @@ class memoryManagement{
             worstTxt.setOpaque(true);
             worstTxt.setFont(font);
             worstTxt.setHorizontalAlignment(JLabel.CENTER);
-            worstTxt.setBackground(Color.ORANGE);
+            worstTxt.setBackground(Color.MAGENTA);
             frame.getContentPane().add(worstTxt);
         
         JLabel proSize = new JLabel("Time Units Passed");
