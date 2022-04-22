@@ -1,3 +1,5 @@
+package CIS452_Project2;
+
  
 import java.awt.Color;
 import java.awt.Font;
@@ -7,7 +9,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 
@@ -153,7 +154,7 @@ class GFG2{
 
         //borders
         Border border = BorderFactory.createLineBorder(Color.BLACK, 3); 
-        Font font = new Font("Courier", Font.PLAIN, 18);
+        //Font font = new Font("Courier", Font.PLAIN, 18);
         Font font2 = new Font("Courier", Font.PLAIN, 14);
 
         //JLabels

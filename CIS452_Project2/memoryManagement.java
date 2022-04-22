@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 import java.awt.event.ActionEvent;
@@ -18,31 +17,26 @@ import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
-// Java implementation of First - Fit algorithm
 class memoryManagement{
-    // Method to allocate memory to
-    // blocks as per First fit algorithm
+    //**  First Fit algorithm */
     public static int[] firstFit(int memory[], int runTime[]){
-        // Stores block id of the
-        // block allocated to a process
-        int allocation[] = new int[runTime.length];
+        // Stores block id for a process
+        int allocation[] = new int[runTime.length]; 
     
-        // Initially no block is assigned to any process
         for (int i = 0; i < allocation.length; i++)
             allocation[i] = -1;
     
-        // pick each process and find suitable blocks
-        // according to its size ad assign to it
+        // picks process and finds suitable blocks
         for (int i = 0; i < runTime.length; i++){
             for (int j = 0; j < memory.length; j++){
                 if (memory[j] >= runTime[i]){
-                    // allocate block j to p[i] process
+                    // allocates block a process
                     allocation[i] = j;
     
-                    // Reduce available memory in this block.
+                    // Reduces memory after allocating space
                     memory[j] -= runTime[i];
     
-                    break; //ends loop after allocation
+                    break; 
                 }
             }
         }
@@ -50,23 +44,18 @@ class memoryManagement{
         return allocation;
     }
     
-    // Method to allocate memory to blocks as per Best fit
-    // algorithm
+    /** Best Fit Algorithm */
     public static int[] bestFit(int memory[], int runTime[])
     {
-        // Stores block id of the block allocated to a
-        // process
+        // Stores block id 
         int allocation[] = new int[runTime.length];
       
-        // Initially no block is assigned to any process
         for (int i = 0; i < allocation.length; i++)
             allocation[i] = -1;
       
-     // pick each process and find suitable blocks
-        // according to its size ad assign to it
-        for (int i=0; i<memory.length; i++)
-        {
-            // Find the best fit block for current process
+        // picks each process 
+        for (int i=0; i< memory.length; i++){
+            // Find the best fit block 
             int bestIdx = -1;
             for (int j=0; j< memory.length; j++)
             {
@@ -79,13 +68,12 @@ class memoryManagement{
                 }
             }
       
-            // If we could find a block for current process
-            if (bestIdx != -1)
-            {
-                // allocate block j to p[i] process
+            // If block found
+            if (bestIdx != -1){
+                // allocate block to a process
                 allocation[i] = bestIdx;
       
-                // Reduce available memory in this block.
+                // Reduce memory
                 memory[bestIdx] -= runTime[i];
             }
         }
@@ -93,23 +81,17 @@ class memoryManagement{
         return allocation;
     }
     
-    // Method to allocate memory to blocks as per worst fit
-    // algorithm
-    static int[] worstFit(int memory[], int runTime[])
-    {
-        // Stores block id of the block allocated to a
-        // process
+    //** Worst Fit Algorithm */
+    static int[] worstFit(int memory[], int runTime[]){
+        // Stores block id 
         int allocation[] = new int[runTime.length];
       
-        // Initially no block is assigned to any process
         for (int i = 0; i < allocation.length; i++)
             allocation[i] = -1;
       
-        // pick each process and find suitable blocks
-        // according to its size ad assign to it
-        for (int i=0; i<runTime.length; i++)
-        {
-            // Find the best fit block for current process
+        // picks each process 
+        for (int i=0; i<runTime.length; i++) {
+            // Find the worst fit block for process
             int wstIdx = -1;
             for (int j=0; j<memory.length; j++)
             {
@@ -122,21 +104,20 @@ class memoryManagement{
                 }
             }
       
-            // If we could find a block for current process
-            if (wstIdx != -1)
-            {
-                // allocate block j to p[i] process
+            // If blcok found
+            if (wstIdx != -1) {
+                // allocate block to process
                 allocation[i] = wstIdx;
       
-                // Reduce available memory in this block.
+                // Reduce memory
                 memory[wstIdx] -= runTime[i];
             }
         }
         
         return allocation;
     }
-    
-    // Driver Code
+
+    /** Main Method *///////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args){
         int blockSize[] = {100, 500, 200, 300, 600, 150, 200, 125, 327, 298, 103, 298, 123, 43, 29, 384, 429, 291, 92, 183};
         int processSize[] = {212, 417, 112, 426, 150, 238, 192, 382, 382, 92, 192, 82, 292, 248, 489, 921, 129, 382, 482, 291};
@@ -147,7 +128,7 @@ class memoryManagement{
         
 
         /** GUI Parts */
-        JFrame frame = new JFrame("Project 2: Memory Management");
+        JFrame frame = new JFrame("- Project 2: Memory Management -");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(850,800);
 
@@ -157,62 +138,84 @@ class memoryManagement{
 
         //borders
         Border border = BorderFactory.createLineBorder(Color.BLACK, 3); 
-        Font font = new Font("Courier", Font.PLAIN, 18);
+       // Font font = new Font("Courier", Font.PLAIN, 18);
         Font font2 = new Font("Courier", Font.PLAIN, 14);
 
         Timer timer = new Timer("Timer");
 
+        //BUTTON
         JButton button = new JButton("Button");
-        button.setBounds(20, 500, 150, 50);
+        button.setBounds(40, 500, 150, 50);
         button.setBorder(border);
         button.setHorizontalAlignment(JLabel.CENTER);
-        button.setBackground(Color.gray);
+        button.setBackground(Color.PINK);
         button.setOpaque(true);
         button.setFont(font2);
         frame.getContentPane().add(button);
 		button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 TimerTask task = new TimerTask() {
+                    int inny = 0;
                     public void run(){
-                        button.setText("Time?");
-                        int i = 0;
-                        //for (int i = 0; i < first.length; i++) {
-                            if(i < first.length){
-                            String blockText = Integer.toString(first[i]);
-                            if(first[i] == -1) {
-                                blockText = "Not allocated";
-                            }
-                            JLabel txt = new JLabel(blockText);
-                            txt.setBounds(250, 25 * i, 150, 25);
-                            txt.setBorder(border);
-                            txt.setHorizontalAlignment(JLabel.CENTER);
-                            txt.setBackground(Color.CYAN);
-                            txt.setOpaque(true);
-                            txt.setFont(font2);
-                            frame.getContentPane().add(txt);
-                                i++;
-                            }
-                            // JLabel tes = new JLabel();
-                            // frame.getContentPane().add(tes);
-                            // frame.setVisible(true);
-                            
-                       // }
+                        /** First Fit */
+                        String blockText = Integer.toString(first[inny]);
+                        if(first[inny] == -1) {
+                            blockText = "Not Allocated";
+                        }
+                        else{ 
+                            blockText = Integer.toString(inny);
+                        }
+                        JLabel txt = new JLabel(blockText);
+                        txt.setBounds(250, 33 * inny, 150, 25);
+                        txt.setBorder(border);
+                        txt.setHorizontalAlignment(JLabel.CENTER);
+                        txt.setBackground(Color.CYAN);
+                        txt.setOpaque(true);
+                        txt.setFont(font2);
+                        frame.getContentPane().add(txt);
+
+                    /** Best Fit */
+                        String blockTextx = Integer.toString(best[inny]);
+                        if(best[inny] == -1) {
+                            blockText = "Not Allocated";
+                        }
+                        JLabel txtx = new JLabel(blockTextx);
+                        txtx.setBounds(425, 33 * inny, 150, 25);
+                        txtx.setBorder(border);
+                        txt.setHorizontalAlignment(JLabel.CENTER);
+                        txtx.setBackground(Color.GREEN);
+                        txtx.setOpaque(true);
+                        txtx.setFont(font2);
+                        frame.getContentPane().add(txtx);
+
+                        /** Worst Fit */
+                        String blockTexts = Integer.toString(worst[inny]);
+                        if(worst[inny] == -1) {
+                            blockTexts = "Not allocated";
+                        }
+                        JLabel txts = new JLabel(blockTexts);
+                        txts.setBounds(600, 33 * inny, 150, 25);
+                        txts.setBorder(border);
+                        txt.setHorizontalAlignment(JLabel.CENTER);
+                        txts.setBackground(Color.ORANGE);
+                        txts.setOpaque(true);
+                        txts.setFont(font2);
+                        frame.getContentPane().add(txts);
+                                
+                        JLabel tes = new JLabel();
+                        frame.getContentPane().add(tes);
+                        frame.setVisible(true);
+                        inny++;
                     }
                 };
                 JLabel tes = new JLabel();
                 frame.getContentPane().add(tes);
                 frame.setVisible(true);
-               timer.schedule(task, 2000);
+                timer.schedule(task, 1500, 1000);
             }
         });
 
-		button.setBounds(20, 500, 150, 50);
-        button.setBorder(border);
-        button.setHorizontalAlignment(JLabel.CENTER);
-        button.setBackground(Color.gray);
-        button.setOpaque(true);
-        button.setFont(font2);
-        frame.getContentPane().add(button);
+		 
 
 
         //JLabels
@@ -245,7 +248,7 @@ class memoryManagement{
         wor.setFont(font2);
         frame.getContentPane().add(wor);
 
-        JLabel proNum = new JLabel("Next Process to be allocated");
+        JLabel proNum = new JLabel("Next Allocation");
         proNum.setBounds(25, 50, 200, 50);
         proNum.setBorder(border);
         proNum.setHorizontalAlignment(JLabel.CENTER);
@@ -266,6 +269,7 @@ class memoryManagement{
             firstTxt.setBorder(border);
             firstTxt.setOpaque(true);
             firstTxt.setFont(font2);
+            firstTxt.setHorizontalAlignment(JLabel.CENTER);
             firstTxt.setBackground(Color.CYAN);
             frame.getContentPane().add(firstTxt);
         
@@ -276,6 +280,7 @@ class memoryManagement{
             bestTxt.setBorder(border);
             bestTxt.setOpaque(true);
             bestTxt.setFont(font2);
+            bestTxt.setHorizontalAlignment(JLabel.CENTER);
             bestTxt.setBackground(Color.GREEN);
             frame.getContentPane().add(bestTxt);
         
@@ -286,6 +291,7 @@ class memoryManagement{
             worstTxt.setBorder(border);
             worstTxt.setOpaque(true);
             worstTxt.setFont(font2);
+            worstTxt.setHorizontalAlignment(JLabel.CENTER);
             worstTxt.setBackground(Color.ORANGE);
             frame.getContentPane().add(worstTxt);
         
@@ -300,62 +306,6 @@ class memoryManagement{
         proSize.setFont(font2);
         frame.getContentPane().add(proSize);
         
-        // int [] first = firstFit(blockSize, processSize);
-        // int [] best = bestFit(blockSize, processSize);
-        // int [] worst = worstFit(blockSize, processSize);
-        
-       
-        
-        // for (int i = 0; i < first.length; i++) {
-            
-        //         String blockText = Integer.toString(first[i]);
-        //         if(first[i] == -1) {
-        //             blockText = "Not allocated";
-        //         }
-        //         JLabel txt = new JLabel(blockText);
-        //         txt.setBounds(250, 25 * i, 150, 25);
-        //         txt.setBorder(border);
-        //         //txt.setHorizontalAlignment(JLabel.CENTER);
-        //         txt.setBackground(Color.CYAN);
-        //         txt.setOpaque(true);
-        //         txt.setFont(font2);
-        //         frame.getContentPane().add(txt);
-                
-        // }
-
-        
-        for (int i = 0; i < best.length; i++) {
-                String blockText = Integer.toString(best[i]);
-                if(best[i] == -1) {
-                    blockText = "Not allocated";
-                }
-                JLabel txt = new JLabel(blockText);
-                txt.setBounds(425, 25 * i, 150, 25);
-                txt.setBorder(border);
-                //txt.setHorizontalAlignment(JLabel.CENTER);
-                txt.setBackground(Color.GREEN);
-                txt.setOpaque(true);
-                txt.setFont(font2);
-                frame.getContentPane().add(txt);
-        }
-        
-        for (int i = 0; i < worst.length; i++) {
-                String blockText = Integer.toString(worst[i]);
-                if(worst[i] == -1) {
-                    blockText = "Not allocated";
-                }
-                JLabel txt = new JLabel(blockText);
-                txt.setBounds(600, 25 * i, 150, 25);
-                txt.setBorder(border);
-                //txt.setHorizontalAlignment(JLabel.CENTER);
-                txt.setBackground(Color.ORANGE);
-                txt.setOpaque(true);
-                txt.setFont(font2);
-                frame.getContentPane().add(txt);
-                
-              
-                
-        }
         
         //This label is here to align the others, should be put in last to preserve label order!
         JLabel tes = new JLabel();
