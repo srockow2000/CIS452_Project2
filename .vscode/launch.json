@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch memoryManagement",
+            "request": "launch",
+            "mainClass": "CIS452_Project2.memoryManagement",
+            "projectName": "CIS452_Project2_42c39abe"
+        },
+        {
+            "type": "java",
             "name": "Launch GFG2",
             "request": "launch",
             "mainClass": "CIS452_Project2.GFG2",
