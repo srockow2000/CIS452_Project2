@@ -130,7 +130,7 @@ class memoryManagement{
         /** GUI Parts */
         JFrame frame = new JFrame("- Project 2: Memory Management -");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(850,800);
+        frame.setSize(825,800);
 
         JPanel pj = new JPanel();
         pj.setLayout(new GridLayout());
@@ -144,16 +144,17 @@ class memoryManagement{
         Timer timer = new Timer("Timer");
 
         //BUTTON
-        JButton button = new JButton("Button");
-        button.setBounds(40, 500, 150, 50);
+        JButton button = new JButton("- Start Algorithms -");
+        button.setBounds(30, 500, 200, 50);
         button.setBorder(border);
         button.setHorizontalAlignment(JLabel.CENTER);
         button.setBackground(Color.PINK);
         button.setOpaque(true);
-        button.setFont(font);
+        button.setFont(font2);
         frame.getContentPane().add(button);
 		button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                button.setBackground(Color.WHITE);
                 TimerTask task = new TimerTask() {
                     int inny = 0;
                     public void run(){
@@ -166,7 +167,7 @@ class memoryManagement{
                             blockText = Integer.toString(inny);
                         }
                         JLabel txt = new JLabel(blockText);
-                        txt.setBounds(250, 33 * inny, 150, 25);
+                        txt.setBounds(270, 33 * inny, 150, 25);
                         txt.setBorder(border);
                         txt.setHorizontalAlignment(JLabel.CENTER);
                         txt.setBackground(Color.CYAN);
@@ -180,7 +181,7 @@ class memoryManagement{
                             blockText = "Not Allocated";
                         }
                         JLabel txtx = new JLabel(blockTextx);
-                        txtx.setBounds(425, 33 * inny, 150, 25);
+                        txtx.setBounds(445, 33 * inny, 150, 25);
                         txtx.setBorder(border);
                         txtx.setHorizontalAlignment(JLabel.CENTER);
                         txtx.setBackground(Color.GREEN);
@@ -194,7 +195,7 @@ class memoryManagement{
                             blockTexts = "Not allocated";
                         }
                         JLabel txts = new JLabel(blockTexts);
-                        txts.setBounds(600, 33 * inny, 150, 25);
+                        txts.setBounds(620, 33 * inny, 150, 25);
                         txts.setBorder(border);
                         txts.setHorizontalAlignment(JLabel.CENTER);
                         txts.setBackground(Color.ORANGE);
@@ -217,7 +218,7 @@ class memoryManagement{
 
         //JLabels
         JLabel lab = new JLabel("First Fit");
-        lab.setBounds(250, 700, 150, 50);
+        lab.setBounds(270, 700, 150, 50);
         lab.setBorder(border);
         lab.setHorizontalAlignment(JLabel.CENTER);
         lab.setBackground(Color.CYAN);
@@ -226,7 +227,7 @@ class memoryManagement{
         frame.getContentPane().add(lab);
 
         JLabel bes = new JLabel("Best Fit");
-        bes.setBounds(425, 700, 150, 50);
+        bes.setBounds(445, 700, 150, 50);
         bes.setBorder(border);
         bes.setHorizontalAlignment(JLabel.CENTER);
         bes.setBackground(Color.GREEN);
@@ -235,7 +236,7 @@ class memoryManagement{
         frame.getContentPane().add(bes);
 
         JLabel wor = new JLabel("Worst Fit");
-        wor.setBounds(600, 700, 150, 50);
+        wor.setBounds(620, 700, 150, 50);
         wor.setBorder(border);
         wor.setHorizontalAlignment(JLabel.CENTER);
         wor.setBackground(Color.ORANGE);
@@ -262,7 +263,7 @@ class memoryManagement{
             firstTxt.setBounds(25, 100, 200, 50);
             firstTxt.setBorder(border);
             firstTxt.setOpaque(true);
-            firstTxt.setFont(font2);
+            firstTxt.setFont(font);
             firstTxt.setHorizontalAlignment(JLabel.CENTER);
             firstTxt.setBackground(Color.CYAN);
             frame.getContentPane().add(firstTxt);
@@ -272,7 +273,7 @@ class memoryManagement{
             bestTxt.setBounds(25, 150, 200, 50);
             bestTxt.setBorder(border);
             bestTxt.setOpaque(true);
-            bestTxt.setFont(font2);
+            bestTxt.setFont(font);
             bestTxt.setHorizontalAlignment(JLabel.CENTER);
             bestTxt.setBackground(Color.GREEN);
             frame.getContentPane().add(bestTxt);
@@ -282,7 +283,7 @@ class memoryManagement{
             worstTxt.setBounds(25, 200, 200, 50);
             worstTxt.setBorder(border);
             worstTxt.setOpaque(true);
-            worstTxt.setFont(font2);
+            worstTxt.setFont(font);
             worstTxt.setHorizontalAlignment(JLabel.CENTER);
             worstTxt.setBackground(Color.ORANGE);
             frame.getContentPane().add(worstTxt);
@@ -295,11 +296,13 @@ class memoryManagement{
         proSize.setOpaque(true);
         proSize.setFont(font);
         frame.getContentPane().add(proSize);
+
+        frame.getContentPane().setBackground(Color.DARK_GRAY);
         
         //This label is here to align the others, should be put in last to preserve label order!
         JLabel tes = new JLabel();
         frame.getContentPane().add(tes);
-
+        
         frame.setVisible(true);
         //testing....?
     }
