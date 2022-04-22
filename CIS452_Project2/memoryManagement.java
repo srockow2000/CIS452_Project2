@@ -1,15 +1,22 @@
+package CIS452_Project2;
+
  
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 // Java implementation of First - Fit algorithm
 class memoryManagement{
@@ -129,14 +136,16 @@ class memoryManagement{
         return allocation;
     }
     
-    
     // Driver Code
     public static void main(String[] args){
         int blockSize[] = {100, 500, 200, 300, 600, 150, 200, 125, 327, 298, 103, 298, 123, 43, 29, 384, 429, 291, 92, 183};
         int processSize[] = {212, 417, 112, 426, 150, 238, 192, 382, 382, 92, 192, 82, 292, 248, 489, 921, 129, 382, 482, 291};
         
+        int [] first = firstFit(blockSize, processSize);
+        int [] best = bestFit(blockSize, processSize);
+        int [] worst = worstFit(blockSize, processSize);
         
-        
+
         /** GUI Parts */
         JFrame frame = new JFrame("Project 2: Memory Management");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -147,10 +156,64 @@ class memoryManagement{
         frame.getContentPane().add(pj); //not visible
 
         //borders
-        
         Border border = BorderFactory.createLineBorder(Color.BLACK, 3); 
         Font font = new Font("Courier", Font.PLAIN, 18);
         Font font2 = new Font("Courier", Font.PLAIN, 14);
+
+        Timer timer = new Timer("Timer");
+
+        JButton button = new JButton("Button");
+        button.setBounds(20, 500, 150, 50);
+        button.setBorder(border);
+        button.setHorizontalAlignment(JLabel.CENTER);
+        button.setBackground(Color.gray);
+        button.setOpaque(true);
+        button.setFont(font2);
+        frame.getContentPane().add(button);
+		button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                TimerTask task = new TimerTask() {
+                    public void run(){
+                        button.setText("Time?");
+                        int i = 0;
+                        //for (int i = 0; i < first.length; i++) {
+                            if(i < first.length){
+                            String blockText = Integer.toString(first[i]);
+                            if(first[i] == -1) {
+                                blockText = "Not allocated";
+                            }
+                            JLabel txt = new JLabel(blockText);
+                            txt.setBounds(250, 25 * i, 150, 25);
+                            txt.setBorder(border);
+                            txt.setHorizontalAlignment(JLabel.CENTER);
+                            txt.setBackground(Color.CYAN);
+                            txt.setOpaque(true);
+                            txt.setFont(font2);
+                            frame.getContentPane().add(txt);
+                                i++;
+                            }
+                            // JLabel tes = new JLabel();
+                            // frame.getContentPane().add(tes);
+                            // frame.setVisible(true);
+                            
+                       // }
+                    }
+                };
+                JLabel tes = new JLabel();
+                frame.getContentPane().add(tes);
+                frame.setVisible(true);
+               timer.schedule(task, 2000);
+            }
+        });
+
+		button.setBounds(20, 500, 150, 50);
+        button.setBorder(border);
+        button.setHorizontalAlignment(JLabel.CENTER);
+        button.setBackground(Color.gray);
+        button.setOpaque(true);
+        button.setFont(font2);
+        frame.getContentPane().add(button);
+
 
         //JLabels
         JLabel lab = new JLabel("First Fit");
@@ -237,28 +300,28 @@ class memoryManagement{
         proSize.setFont(font2);
         frame.getContentPane().add(proSize);
         
-        int [] first = firstFit(blockSize, processSize);
-        int [] best = bestFit(blockSize, processSize);
-        int [] worst = worstFit(blockSize, processSize);
+        // int [] first = firstFit(blockSize, processSize);
+        // int [] best = bestFit(blockSize, processSize);
+        // int [] worst = worstFit(blockSize, processSize);
         
        
         
-        for (int i = 0; i < first.length; i++) {
+        // for (int i = 0; i < first.length; i++) {
             
-                String blockText = Integer.toString(first[i]);
-                if(first[i] == -1) {
-                    blockText = "Not allocated";
-                }
-                JLabel txt = new JLabel(blockText);
-                txt.setBounds(250, 25 * i, 150, 25);
-                txt.setBorder(border);
-                //txt.setHorizontalAlignment(JLabel.CENTER);
-                txt.setBackground(Color.CYAN);
-                txt.setOpaque(true);
-                txt.setFont(font2);
-                frame.getContentPane().add(txt);
+        //         String blockText = Integer.toString(first[i]);
+        //         if(first[i] == -1) {
+        //             blockText = "Not allocated";
+        //         }
+        //         JLabel txt = new JLabel(blockText);
+        //         txt.setBounds(250, 25 * i, 150, 25);
+        //         txt.setBorder(border);
+        //         //txt.setHorizontalAlignment(JLabel.CENTER);
+        //         txt.setBackground(Color.CYAN);
+        //         txt.setOpaque(true);
+        //         txt.setFont(font2);
+        //         frame.getContentPane().add(txt);
                 
-        }
+        // }
 
         
         for (int i = 0; i < best.length; i++) {
