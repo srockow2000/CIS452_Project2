@@ -1,6 +1,5 @@
 package CIS452_Project2;
 
- 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -18,22 +17,25 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 class memoryManagement{
+    
+        
     //**  First Fit algorithm */
     public static int[] firstFit(int memory[], int runTime[]){
-        // Stores block id for a process
-        int allocation[] = new int[runTime.length]; 
+        // Create new array to hold sorted firstFit array
+        int first[] = new int[runTime.length]; 
     
-        for (int i = 0; i < allocation.length; i++)
-            allocation[i] = -1;
+        
+        for (int i = 0; i < first.length; i++)
+            first[i] = -1;
     
-        // picks process and finds suitable blocks
+        // looks through the runTime to find the first process that will fit
         for (int i = 0; i < runTime.length; i++){
             for (int j = 0; j < memory.length; j++){
                 if (memory[j] >= runTime[i]){
-                    // allocates block a process
-                    allocation[i] = j;
+                    // assigns position to process
+                    first[i] = j;
     
-                    // Reduces memory after allocating space
+                    // reduces memory after assigning process
                     memory[j] -= runTime[i];
     
                     break; 
@@ -41,90 +43,92 @@ class memoryManagement{
             }
         }
     
-        return allocation;
+        return first;
     }
     
     /** Best Fit Algorithm */
     public static int[] bestFit(int memory[], int runTime[])
     {
-        // Stores block id 
-        int allocation[] = new int[runTime.length];
+        // Create new array to hold sorted bestFit array
+        int best[] = new int[runTime.length];
       
-        for (int i = 0; i < allocation.length; i++)
-            allocation[i] = -1;
+        for (int i = 0; i < best.length; i++)
+            best[i] = -1;
       
-        // picks each process 
+        // look through memory twice to find the best possible fit
         for (int i=0; i< memory.length; i++){
-            // Find the best fit block 
-            int bestIdx = -1;
+            
+            int bestIndex = -1;
             for (int j=0; j< memory.length; j++)
             {
                 if (memory[j] >= runTime[i])
                 {
-                    if (bestIdx == -1)
-                        bestIdx = j;
-                    else if (memory[bestIdx] > memory[j])
-                        bestIdx = j;
+                    if (bestIndex == -1)
+                        bestIndex = j;
+                    else if (memory[bestIndex] > memory[j])
+                        bestIndex = j;
                 }
             }
       
             // If block found
-            if (bestIdx != -1){
-                // allocate block to a process
-                allocation[i] = bestIdx;
-      
-                // Reduce memory
-                memory[bestIdx] -= runTime[i];
+            if (bestIndex != -1){
+                // assign process
+                best[i] = bestIndex;
+                memory[bestIndex] -= runTime[i];
             }
         }
         
-        return allocation;
+        return best;
     }
     
     //** Worst Fit Algorithm */
     static int[] worstFit(int memory[], int runTime[]){
-        // Stores block id 
-        int allocation[] = new int[runTime.length];
+        // Create new array to hold sorted worstFit array
+        int worst[] = new int[runTime.length];
       
-        for (int i = 0; i < allocation.length; i++)
-            allocation[i] = -1;
+        for (int i = 0; i < worst.length; i++)
+            worst[i] = -1;
       
-        // picks each process 
+        // look through memory twice to find the worst possible fit
         for (int i=0; i<runTime.length; i++) {
-            // Find the worst fit block for process
-            int wstIdx = -1;
+            
+            int worstIndex = -1;
             for (int j=0; j<memory.length; j++)
             {
                 if (memory[j] >= runTime[i])
                 {
-                    if (wstIdx == -1)
-                        wstIdx = j;
-                    else if (memory[wstIdx] < memory[j])
-                        wstIdx = j;
+                    if (worstIndex == -1)
+                        worstIndex = j;
+                    else if (memory[worstIndex] < memory[j])
+                        worstIndex = j;
                 }
             }
       
-            // If blcok found
-            if (wstIdx != -1) {
-                // allocate block to process
-                allocation[i] = wstIdx;
-      
-                // Reduce memory
-                memory[wstIdx] -= runTime[i];
+            // set worst[i] equal to the worst fit found
+            if (worstIndex != -1) {
+                worst[i] = worstIndex;
+                memory[worstIndex] -= runTime[i];
             }
         }
         
-        return allocation;
+        return worst;
     }
 
     /** Main Method *///////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args){
-        int blockSize[] = {100, 500, 200, 300, 600, 150, 200, 125, 327, 298, 103, 298, 123, 43, 29, 384, 429, 291, 92, 183};
-        int processSize[] = {212, 417, 112, 426, 150, 238, 192, 382, 382, 92, 192, 82, 292, 248, 489, 921, 129, 382, 482, 291};
+        int memory[] = {100, 500, 200, 300, 600, 150, 200, 125, 327, 298, 103, 298, 123, 43, 29, 384, 429, 291, 92, 183};
+        int runTime[] = {212, 417, 112, 426, 150, 238, 192, 382, 382, 92, 192, 82, 292, 248, 489, 921, 129, 382, 482, 291};
         
+<<<<<<< HEAD
         int [] first = firstFit(blockSize, processSize);
         int [] best = bestFit(blockSize, processSize);
         int [] worst = worstFit(blockSize, processSize);
+=======
+        int [] first = firstFit(memory, runTime);
+        int [] best = bestFit(memory, runTime);
+        int [] worst = worstFit(memory, runTime);
+        
+>>>>>>> 65713e904adac9fc9157a2a2e588a3541c229961
 
         /** GUI Parts */
         JFrame frame = new JFrame("- Project 2: Memory Management -");
@@ -300,6 +304,53 @@ class memoryManagement{
         proNum.setOpaque(true);
         proNum.setFont(font);
         frame.getContentPane().add(proNum);
+<<<<<<< HEAD
+=======
+        
+        String processText = "";
+        for (int i = 0; i < memory.length; i++) {
+            processText = Integer.toString(memory[i]);
+        }
+        
+            String firstText = "First: " + processText;
+            JLabel firstTxt = new JLabel(firstText);
+            firstTxt.setBounds(25, 100, 200, 50);
+            firstTxt.setBorder(border);
+            firstTxt.setOpaque(true);
+            firstTxt.setFont(font);
+            firstTxt.setHorizontalAlignment(JLabel.CENTER);
+            firstTxt.setBackground(Color.CYAN);
+            frame.getContentPane().add(firstTxt);
+        
+            String bestText = "Best: " + processText;
+            JLabel bestTxt = new JLabel(bestText);
+            bestTxt.setBounds(25, 150, 200, 50);
+            bestTxt.setBorder(border);
+            bestTxt.setOpaque(true);
+            bestTxt.setFont(font);
+            bestTxt.setHorizontalAlignment(JLabel.CENTER);
+            bestTxt.setBackground(Color.GREEN);
+            frame.getContentPane().add(bestTxt);
+        
+            String worstText = "Worst: " + processText;
+            JLabel worstTxt = new JLabel(worstText);
+            worstTxt.setBounds(25, 200, 200, 50);
+            worstTxt.setBorder(border);
+            worstTxt.setOpaque(true);
+            worstTxt.setFont(font);
+            worstTxt.setHorizontalAlignment(JLabel.CENTER);
+            worstTxt.setBackground(Color.MAGENTA);
+            frame.getContentPane().add(worstTxt);
+        
+        JLabel proSize = new JLabel("Time Units Passed: ");
+        proSize.setBounds(25, 300, 200, 150);
+        proSize.setBorder(border);
+        proSize.setHorizontalAlignment(JLabel.CENTER);
+        proSize.setBackground(Color.LIGHT_GRAY);
+        proSize.setOpaque(true);
+        proSize.setFont(font);
+        frame.getContentPane().add(proSize);
+>>>>>>> 65713e904adac9fc9157a2a2e588a3541c229961
 
         frame.getContentPane().setBackground(Color.DARK_GRAY);
         
